@@ -7,4 +7,5 @@ app_name = 'core'
 
 urlpatterns = [
     path('', v.index, name='index'),
+    path('dashboard/', v.dashboard, name='dashboard'),  # noqa E501
 ]
