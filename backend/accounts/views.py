@@ -1,7 +1,10 @@
 from django.contrib.auth.views import (
     PasswordResetCompleteView,
-    PasswordResetConfirmView
+    PasswordResetConfirmView,
+    PasswordResetDoneView,
+    PasswordResetView,
 )
+
 from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 
@@ -43,5 +46,23 @@ class MyPasswordResetConfirm(PasswordResetConfirmView):
 class MyPasswordResetComplete(PasswordResetCompleteView):
     '''
     Requer password_reset_complete.html
+    '''
+    ...
+
+
+class MyPasswordReset(PasswordResetView):
+    '''
+    Requer
+    registration/password_reset_form.html
+    registration/password_reset_email.html
+    registration/password_reset_subject.txt  Opcional
+    '''
+    ...
+
+
+class MyPasswordResetDone(PasswordResetDoneView):
+    '''
+    Requer
+    registration/password_reset_done.html
     '''
     ...
