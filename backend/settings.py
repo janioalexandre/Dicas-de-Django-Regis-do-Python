@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # apps de terceiros
     'django_extensions',
+    'widget_tweaks',
     # minhas apps
     'backend.core',
     'backend.crm',
@@ -113,8 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Email Configuration
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Para Gmail
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

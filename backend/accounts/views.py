@@ -1,7 +1,47 @@
+from django.contrib.auth.views import (
+    PasswordResetCompleteView,
+    PasswordResetConfirmView
+)
 from django.contrib.auth import logout
-from django.shortcuts import redirect
-from django.urls import reverse
+from django.shortcuts import redirect, render
+
+from backend.accounts.services import send_mail_to_user
+
+from .forms import CustomUserForm
 
 def logout_view(request):
     logout(request)
     return redirect('core:index')
+
+def signup(request):
+    '''
+    Cadastra Usuário.
+    '''
+    template_name = 'registration/registration_form.html'
+    form = CustomUserForm(request.POST or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            user = form.save()
+            send_mail_to_user(request=request, user=user)
+            return redirect('login')
+
+    return render(request, template_name)
+
+
+class MyPasswordResetConfirm(PasswordResetConfirmView):
+    '''
+    Requer password_reset_confirm.html
+    '''
+
+    def form_valid(self, form):
+        self.user.is_active = True
+        self.user.save()
+        return super(MyPasswordResetConfirm, self).form_valid(form)
+
+
+class MyPasswordResetComplete(PasswordResetCompleteView):
+    '''
+    Requer password_reset_complete.html
+    '''
+    ...
