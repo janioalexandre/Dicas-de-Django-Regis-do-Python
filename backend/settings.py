@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     # apps de terceiros
     'django_extensions',
     # minhas apps
-    'backend.core'
+    'backend.core',
+    'backend.crm',
 ]
 
 MIDDLEWARE = [
@@ -109,6 +110,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Email Configuration
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Para Gmail
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'janioalexandre@gmail.com'  # Seu email
+EMAIL_HOST_PASSWORD = ''  # Senha de app do Google
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
